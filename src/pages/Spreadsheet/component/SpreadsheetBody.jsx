@@ -13,16 +13,17 @@ import {
   DialogTitle,
 } from "@mui/material";
 import { Panel } from "./panel";
+
 export const SpreadsheetBody = () => {
   const [openDialog, setOpenDialog] = useState(false);
-
   const handleDialogClose = () => {
     setOpenDialog(false);
   };
 
+  const [propParams, setPropParams] = useState("");
   const columns = [
-    { field: "category", headerName: "Categories", flex: 1 },
     { field: "type", headerName: "Type", flex: 1 },
+    { field: "category", headerName: "Categories", flex: 1 },
     { field: "amount", headerName: "Amount", flex: 1 },
     { field: "month", headerName: "Month", flex: 1 },
     { field: "year", headerName: "Year", flex: 1 },
@@ -32,6 +33,7 @@ export const SpreadsheetBody = () => {
       flex: 1,
       renderCell: (params) => {
         const handleEditClick = () => {
+          setPropParams(params.row);
           setOpenDialog(true);
         };
 
@@ -44,7 +46,7 @@ export const SpreadsheetBody = () => {
     },
   ];
 
-  const data = [
+  let data = [
     {
       id: 1,
       category: "Healthcare",
@@ -54,11 +56,15 @@ export const SpreadsheetBody = () => {
       year: 2023,
     },
   ];
+  const [dataRows, setDataRows] = useState(data);
+
+  const [onSubmit, setonSubmit] = useState(() => {});
+
   return (
     <Box className="Spreadsheet-body">
-      <Panel EditPanel={false} />
+      <Panel EditPanel={false} SetDataRows={setDataRows} />
       <Box style={{ width: "100%", height: "inherit" }}>
-        <DataGrid rows={data} columns={columns} hideFooter />
+        <DataGrid rows={dataRows} columns={columns} hideFooter />
         <Dialog open={openDialog} onClose={handleDialogClose} maxWidth="false">
           <DialogTitle>Edit Record</DialogTitle>
           <DialogContent
@@ -67,11 +73,16 @@ export const SpreadsheetBody = () => {
               display: "flex",
               alignItems: "center",
             }}>
-            <Panel EditPanel={true} />
+            <Panel
+              EditPanel={true}
+              SetDataRows={setDataRows}
+              Params={propParams}
+              CallBack={setonSubmit}
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleDialogClose}>Cancel</Button>
-            <Button onClick={handleDialogClose} color="primary">
+            <Button onClick={onSubmit} color="primary">
               Save
             </Button>
           </DialogActions>

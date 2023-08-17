@@ -7,12 +7,54 @@ import Select from "@mui/material/Select";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-export const Panel = ({ EditPanel }) => {
-  const [propType, setPropType] = useState("Income");
-  const [propCategory, setPropCategory] = useState("Other");
-  const [propAmount, setPropAmount] = useState("");
-  const [propMonth, setPropMonth] = useState("Jan");
-  const [propYear, setPropYear] = useState(2023);
+export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
+  console.log(Params);
+  const [propType, setPropType] = useState(!EditPanel ? "Income" : Params.type);
+  const [propCategory, setPropCategory] = useState(
+    !EditPanel ? "Other" : Params.category
+  );
+  const [propAmount, setPropAmount] = useState(!EditPanel ? "" : Params.amount);
+  const [propMonth, setPropMonth] = useState(!EditPanel ? "Jan" : Params.month);
+  const [propYear, setPropYear] = useState(!EditPanel ? 2023 : Params.year);
+
+  const [isAmountValid, setIsAmountValid] = useState(true);
+
+  const month = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const submit = (event) => {
+    if (propAmount.trim() === "") {
+      setIsAmountValid(false);
+      return;
+    } else {
+      setIsAmountValid(true);
+    }
+    event.preventDefault();
+    SetDataRows((state) => {
+      console.log(state);
+
+      return state.concat({
+        id: state.length + 1,
+        category: propCategory,
+        type: propType,
+        amount: propAmount,
+        month: propMonth,
+        year: propYear,
+      });
+    });
+  };
 
   const handleChange = (func, value) => {
     func(value);
@@ -81,6 +123,8 @@ export const Panel = ({ EditPanel }) => {
         </Box>
         <Box className="micro-selectors">
           <TextField
+            error={!isAmountValid}
+            helperText={!isAmountValid ? "Incorrect entry." : ""}
             label="Amount"
             variant="outlined"
             value={propAmount}
@@ -103,21 +147,10 @@ export const Panel = ({ EditPanel }) => {
                 onChange={(event) =>
                   handleChange(setPropMonth, event.target.value)
                 }>
-                {[
-                  "Jan",
-                  "Feb",
-                  "Mar",
-                  "Apr",
-                  "May",
-                  "Jun",
-                  "Jul",
-                  "Aug",
-                  "Sep",
-                  "Oct",
-                  "Nov",
-                  "Dec",
-                ].map((month) => (
-                  <MenuItem value={month}>{month}</MenuItem>
+                {month.map((month) => (
+                  <MenuItem key={month} value={month}>
+                    {month}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -144,7 +177,10 @@ export const Panel = ({ EditPanel }) => {
         </Box>
         {!EditPanel ? (
           <Box className="confirm-btn">
-            <CheckCircleOutlineIcon style={{ width: "100%", height: "100%" }} />
+            <CheckCircleOutlineIcon
+              style={{ width: "100%", height: "100%" }}
+              onClick={submit}
+            />
           </Box>
         ) : null}
       </Box>
