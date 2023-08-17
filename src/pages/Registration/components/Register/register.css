@@ -1,0 +1,93 @@
+.reg {
+  height: 263px;
+  position: relative;
+  width: 382px;
+  top:25%;
+}
+
+/* .auth  */
+.overlap-1 {
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 115px;
+  width: 382px;
+}
+
+.input {
+  background-color: #103172;
+  border-radius: 9px;
+  outline: none;
+  border: 0;
+  color: #ffffff;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  height: 51px;
+
+  line-height: normal;
+  opacity: 0.4;
+  padding: 0;
+  position: absolute;
+  padding-left: 5px;
+  width: 382px;
+}
+.input:focus {
+  background-color: #1344a5;
+} 
+/* .auth  */
+.overlap {
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 23px;
+  width: 382px;
+}
+.overlap-2 {
+  height: 52px;
+  left: 0;
+  position: absolute;
+  top: 207px;
+  width: 382px;
+}
+
+.password {
+  margin-left: 5px;
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 3px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: -25px;
+  width: 119px;
+}
+
+/* .auth  */
+.login1 {
+  margin-left: 5px;
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 3px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: -25px;
+  width: 119px;
+}
+.confirm-password{
+  margin-left: 5px;
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  left: 3px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: -25px;
+}

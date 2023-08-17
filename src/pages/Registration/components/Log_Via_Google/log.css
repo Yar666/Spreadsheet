@@ -1,0 +1,33 @@
+.log-via-google {
+    background-color: #adadad;
+    border-radius: 5px;
+    height: 52px;
+    position: relative;
+    width: 247px;
+    top:20%
+  }
+  
+  .text-wrapper {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 55px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 13px;
+    white-space: nowrap;
+    width: 175px;
+  }
+  
+   .ico {
+    height: 41px;
+    left: 11px;
+    object-fit: cover;
+    position: absolute;
+    top: 6px;
+    width: 44px;
+  }
+  

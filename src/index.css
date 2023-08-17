@@ -1,0 +1,10 @@
+html,
+body,
+#root {
+margin: 0px;
+background-color: #6677a2;
+  height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", sans-serif;
+  user-select: none;
+}
