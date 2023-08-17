@@ -103,18 +103,22 @@ export const Panel = ({ EditPanel }) => {
                 onChange={(event) =>
                   handleChange(setPropMonth, event.target.value)
                 }>
-                <MenuItem value={"Jan"}>Jan</MenuItem>
-                <MenuItem value={"Feb"}>Feb</MenuItem>
-                <MenuItem value={"Mar"}>Mar</MenuItem>
-                <MenuItem value={"Apr"}>Apr</MenuItem>
-                <MenuItem value={"May"}>May</MenuItem>
-                <MenuItem value={"Jun"}>Jun</MenuItem>
-                <MenuItem value={"Jul"}>Jul</MenuItem>
-                <MenuItem value={"Aug"}>Aug</MenuItem>
-                <MenuItem value={"Sep"}>Sep</MenuItem>
-                <MenuItem value={"Oct"}>Oct</MenuItem>
-                <MenuItem value={"Nov"}>Nov</MenuItem>
-                <MenuItem value={"Dec"}>Dec</MenuItem>
+                {[
+                  "Jan",
+                  "Feb",
+                  "Mar",
+                  "Apr",
+                  "May",
+                  "Jun",
+                  "Jul",
+                  "Aug",
+                  "Sep",
+                  "Oct",
+                  "Nov",
+                  "Dec",
+                ].map((month) => (
+                  <MenuItem value={month}>{month}</MenuItem>
+                ))}
               </Select>
             </FormControl>
           </Menu>
