@@ -14,19 +14,19 @@ import {
 } from "@mui/material";
 import { Panel } from "./component/panel";
 export const SpreadsheetPage = () => {
-  let { id } = useParams();
-  const [type, setType] = useState("Income");
-  const [category, setCategory] = useState("Other");
-  const [amount, setAmount] = useState("");
-  const [month, setMonth] = useState("Jan");
-  const [year, setYear] = useState(2023);
-  console.log(year);
+  const { id } = useParams();
+  // const [type, setType] = useState("Income");
+  // const [category, setCategory] = useState("Other");
+  // const [amount, setAmount] = useState("");
+  // const [month, setMonth] = useState("Jan");
+  // const [year, setYear] = useState(2023);
+  // console.log(year);
 
-  const [PanelCategory, setPanelCategory] = useState("Other");
-  const [PanelAmount, setPanelAmount] = useState("");
-  const [PanelType, setPanelType] = useState("Income");
-  const [PanelMonth, setPanelMonth] = useState("Jan");
-  const [PanelYear, setPanelYear] = useState(2023);
+  // const [PanelCategory, setPanelCategory] = useState("Other");
+  // const [PanelAmount, setPanelAmount] = useState("");
+  // const [PanelType, setPanelType] = useState("Income");
+  // const [PanelMonth, setPanelMonth] = useState("Jan");
+  // const [PanelYear, setPanelYear] = useState(2023);
 
   const [openDialog, setOpenDialog] = useState(false);
   // const [selectedRow, setSelectedRow] = useState(null);
@@ -45,11 +45,11 @@ export const SpreadsheetPage = () => {
       flex: 1,
       renderCell: (params) => {
         const handleEditClick = () => {
-          setPanelCategory(params.row.category);
-          setPanelAmount(params.row.amount);
-          setPanelType(params.row.type);
-          setPanelMonth(params.row.month);
-          setPanelYear(params.row.year);
+          // setPanelCategory(params.row.category);
+          // setPanelAmount(params.row.amount);
+          // setPanelType(params.row.type);
+          // setPanelMonth(params.row.month);
+          // setPanelYear(params.row.year);
           // setSelectedRow({
           //   category: params.row.category,
           //   type: params.row.type,
@@ -88,19 +88,7 @@ export const SpreadsheetPage = () => {
         </Link>
       </Box>
       <Box className="Spreadsheet-body">
-        <Panel
-          EditPanel={false}
-          propType={type}
-          setPropType={setType}
-          propCategory={category}
-          setPropCategory={setCategory}
-          propAmount={amount}
-          setPropAmount={setAmount}
-          propMonth={month}
-          setPropMonth={setMonth}
-          propYear={year}
-          setPropYear={setYear}
-        />
+        <Panel EditPanel={false} />
         <Box style={{ width: "100%", height: "inherit" }}>
           <DataGrid rows={data} columns={columns} hideFooter />
           <Dialog
@@ -110,23 +98,22 @@ export const SpreadsheetPage = () => {
             <DialogTitle>Edit Record</DialogTitle>
             <DialogContent
               sx={{
-                width: "500px",
-                height: "200px",
+                height: "80px",
                 display: "flex",
                 alignItems: "center",
               }}>
               <Panel
                 EditPanel={true}
-                propType={PanelType}
-                setPropType={setPanelType}
-                propCategory={PanelCategory}
-                setPropCategory={setPanelCategory}
-                propAmount={PanelAmount}
-                setPropAmount={setPanelAmount}
-                propMonth={PanelMonth}
-                setPropMonth={setPanelMonth}
-                propYear={PanelYear}
-                setPropYear={setPanelYear}
+                // propType={PanelType}
+                // setPropType={setPanelType}
+                // propCategory={PanelCategory}
+                // setPropCategory={setPanelCategory}
+                // propAmount={PanelAmount}
+                // setPropAmount={setPanelAmount}
+                // propMonth={PanelMonth}
+                // setPropMonth={setPanelMonth}
+                // propYear={PanelYear}
+                // setPropYear={setPanelYear}
               />
             </DialogContent>
             <DialogActions>

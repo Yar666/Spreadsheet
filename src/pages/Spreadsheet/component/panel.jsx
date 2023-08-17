@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
@@ -9,25 +9,29 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 export const Panel = ({
   EditPanel,
-  propType,
-  setPropType,
-  propCategory,
-  setPropCategory,
-  propAmount,
-  setPropAmount,
-  propMonth,
-  setPropMonth,
-  propYear,
-  setPropYear,
+  // propType,
+  // setPropType,
+  // propCategory,
+  // setPropCategory,
+  // propAmount,
+  // setPropAmount,
+  // propMonth,
+  // setPropMonth,
+  // propYear,
+  // setPropYear,
 }) => {
-  console.log(propCategory, EditPanel);
+  const [propType, setPropType] = useState("Income");
+  const [propCategory, setPropCategory] = useState("Other");
+  const [propAmount, setPropAmount] = useState("");
+  const [propMonth, setPropMonth] = useState("Jan");
+  const [propYear, setPropYear] = useState(2023);
 
   const handleChange = (func, value) => {
     func(value);
     console.log(value);
   };
   return (
-    <Box style={{ width: "80%", height: "10%" }}>
+    <Box style={!EditPanel ? { width: "80%", height: "10%" } : null}>
       <Box
         style={{
           background: "white",
