@@ -15,24 +15,13 @@ import {
 import { Panel } from "./component/panel";
 export const SpreadsheetPage = () => {
   const { id } = useParams();
-  // const [type, setType] = useState("Income");
-  // const [category, setCategory] = useState("Other");
-  // const [amount, setAmount] = useState("");
-  // const [month, setMonth] = useState("Jan");
-  // const [year, setYear] = useState(2023);
-  // console.log(year);
-
-  // const [PanelCategory, setPanelCategory] = useState("Other");
-  // const [PanelAmount, setPanelAmount] = useState("");
-  // const [PanelType, setPanelType] = useState("Income");
-  // const [PanelMonth, setPanelMonth] = useState("Jan");
-  // const [PanelYear, setPanelYear] = useState(2023);
 
   const [openDialog, setOpenDialog] = useState(false);
-  // const [selectedRow, setSelectedRow] = useState(null);
+
   const handleDialogClose = () => {
     setOpenDialog(false);
   };
+
   const columns = [
     { field: "category", headerName: "Categories", flex: 1 },
     { field: "type", headerName: "Type", flex: 1 },
@@ -45,19 +34,6 @@ export const SpreadsheetPage = () => {
       flex: 1,
       renderCell: (params) => {
         const handleEditClick = () => {
-          // setPanelCategory(params.row.category);
-          // setPanelAmount(params.row.amount);
-          // setPanelType(params.row.type);
-          // setPanelMonth(params.row.month);
-          // setPanelYear(params.row.year);
-          // setSelectedRow({
-          //   category: params.row.category,
-          //   type: params.row.type,
-          //   amount: params.row.amount,
-          //   month: params.row.month,
-          //   year: params.row.year,
-          // });
-          // console.log(selectedRow);
           setOpenDialog(true);
         };
 
@@ -69,6 +45,7 @@ export const SpreadsheetPage = () => {
       },
     },
   ];
+
   const data = [
     {
       id: 1,

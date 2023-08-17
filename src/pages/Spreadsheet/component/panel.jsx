@@ -7,19 +7,7 @@ import Select from "@mui/material/Select";
 import { Menu, MenuItem } from "react-pro-sidebar";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
-export const Panel = ({
-  EditPanel,
-  // propType,
-  // setPropType,
-  // propCategory,
-  // setPropCategory,
-  // propAmount,
-  // setPropAmount,
-  // propMonth,
-  // setPropMonth,
-  // propYear,
-  // setPropYear,
-}) => {
+export const Panel = ({ EditPanel }) => {
   const [propType, setPropType] = useState("Income");
   const [propCategory, setPropCategory] = useState("Other");
   const [propAmount, setPropAmount] = useState("");
