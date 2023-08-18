@@ -1,47 +1,49 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import "./main.css";
-import { Box } from "@mui/material";
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import ClearIcon from "@mui/icons-material/Clear";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import expenses from "../../assets/expense.png";
-import hryvnia from "../../assets/hryvnia.png";
+import React, { useState } from "react"
+import { Link, useParams } from "react-router-dom"
+import "./main.css"
+import { Box } from "@mui/material"
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar"
+import ClearIcon from "@mui/icons-material/Clear"
+import InputLabel from "@mui/material/InputLabel"
+import FormControl from "@mui/material/FormControl"
+import Select from "@mui/material/Select"
+import expenses from "../../assets/expense.png"
+import hryvnia from "../../assets/hryvnia.png"
 
 import {
   BarChart_Income,
   BarChart_Expenses,
   LineChar_Statistic,
-} from "./components/Bar/Charts";
+} from "./components/Bar/Charts"
 const Item = ({ title, selected, setSelected }) => {
   return (
     <MenuItem
       value={title}
       active={selected === title}
-      onClick={() => setSelected(title)}>
+      onClick={() => setSelected(title)}
+    >
       {" "}
       {title}{" "}
     </MenuItem>
-  );
-};
+  )
+}
 export const AnalyticsPage = () => {
-  let { id } = useParams();
+  let { id } = useParams()
 
-  const [year, setYear] = useState(2023);
+  const [year, setYear] = useState(2023)
   const handleChange = (event) => {
-    setYear(event.target.value);
-  };
+    setYear(event.target.value)
+  }
 
-  const [selected, setSelected] = useState("All");
-  const money = 0;
+  const [selected, setSelected] = useState("All")
+  const money = 0
 
   return (
     <Box style={{ width: "100%", height: "100%", display: "flex" }}>
       <Sidebar
         className="data-sidebar"
-        style={{ height: "100%", width: "125px", minWidth: "unset" }}>
+        style={{ height: "100%", width: "125px", minWidth: "unset" }}
+      >
         <Box style={{ position: "fixed" }}>
           <Link to={"/Home_page"}>
             <ClearIcon className="ExitIco" />
@@ -56,7 +58,8 @@ export const AnalyticsPage = () => {
                 id="year"
                 value={year}
                 label="Year"
-                onChange={handleChange}>
+                onChange={handleChange}
+              >
                 <MenuItem value={2022}>2022</MenuItem>
                 <MenuItem value={2023}>2023</MenuItem>
                 <MenuItem value={2024}>2024</MenuItem>
@@ -72,7 +75,8 @@ export const AnalyticsPage = () => {
               fontSize: "25px",
               fontWeight: "700",
             },
-          }}>
+          }}
+        >
           <Menu>
             <Item title={"All"} selected={selected} setSelected={setSelected} />
             <Item title={"Jan"} selected={selected} setSelected={setSelected} />
@@ -100,7 +104,8 @@ export const AnalyticsPage = () => {
                 justifyContent: "center",
                 flexDirection: "column",
                 alignItems: "center",
-              }}>
+              }}
+            >
               <img src={expenses} style={{ width: "50px" }} alt="" />
               SPREADSHEET
             </Box>
@@ -116,7 +121,8 @@ export const AnalyticsPage = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 gap: "20px",
-              }}>
+              }}
+            >
               TOTAL BALANCE
               <Box
                 sx={{
@@ -126,7 +132,8 @@ export const AnalyticsPage = () => {
                   display: "flex",
                   justifyContent: "center",
                   gap: "10px",
-                }}>
+                }}
+              >
                 <img style={{ width: "50px" }} src={hryvnia} alt="" />
                 {money}
               </Box>
@@ -163,5 +170,5 @@ export const AnalyticsPage = () => {
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}

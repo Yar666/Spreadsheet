@@ -1,5 +1,5 @@
-import React from "react";
-import "./header.css";
+import React from "react"
+import "./header.css"
 
 export const FinancialAccounting = () => {
   return (
@@ -7,5 +7,5 @@ export const FinancialAccounting = () => {
       <div className="Financial-wrapper">Financial accounting</div>
       <div className="rectangle1" />
     </div>
-  );
-};
+  )
+}

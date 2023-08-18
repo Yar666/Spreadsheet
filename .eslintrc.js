@@ -7,7 +7,8 @@ module.exports = {
   },
   "extends": [ 
       "eslint:recommended",
-      "plugin:react/recommended"
+      "plugin:react/recommended",
+      "plugin:prettier/recommended"
   ],
   "parserOptions": {
       "ecmaFeatures": {
@@ -27,13 +28,13 @@ module.exports = {
           "SwitchCase": 1 
         }
       ],
-      "linebreak-style": [
-          "error",
-          "windows"
-      ],
+    //   "linebreak-style": [
+    //       "error",
+    //       "windows"
+    //   ],
       "quotes": [
           "error",
-          "single"
+          "double"
       ],
       "semi": [
           "error",

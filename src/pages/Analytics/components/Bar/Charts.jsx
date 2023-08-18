@@ -1,7 +1,7 @@
-import React from "react";
-import HighchartsReact from "highcharts-react-official";
-import Highcharts from "highcharts";
-import "./Charts.css";
+import React from "react"
+import HighchartsReact from "highcharts-react-official"
+import Highcharts from "highcharts"
+import "./Charts.css"
 
 export const BarChart_Income = () => {
   const options = {
@@ -39,10 +39,10 @@ export const BarChart_Income = () => {
       },
     ],
     colors: ["#2f68ff"],
-  };
+  }
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
-};
+  return <HighchartsReact highcharts={Highcharts} options={options} />
+}
 export const BarChart_Expenses = () => {
   const options = {
     chart: {
@@ -78,10 +78,10 @@ export const BarChart_Expenses = () => {
       },
     ],
     colors: ["#2f68ff"],
-  };
+  }
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
-};
+  return <HighchartsReact highcharts={Highcharts} options={options} />
+}
 export const LineChar_Statistic = () => {
   const options = {
     chart: {
@@ -126,7 +126,7 @@ export const LineChar_Statistic = () => {
         data: [800, 1000, 900, 1100, 950, 1200],
       },
     ],
-  };
+  }
 
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
-};
+  return <HighchartsReact highcharts={Highcharts} options={options} />
+}

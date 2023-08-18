@@ -1,15 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./style.css";
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import SettingsIcon from "@mui/icons-material/Settings";
-import LogoutIcon from "@mui/icons-material/Logout";
-import default_user_photo from "../../assets/default_user_photo.png";
-import sidebarBg from "../../assets/background.png";
-import { Box } from "@mui/material";
+import React from "react"
+import { Link } from "react-router-dom"
+import "./style.css"
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar"
+import SettingsIcon from "@mui/icons-material/Settings"
+import LogoutIcon from "@mui/icons-material/Logout"
+import default_user_photo from "../../assets/default_user_photo.png"
+import sidebarBg from "../../assets/background.png"
+import { Box } from "@mui/material"
 
-import { FinancialAccounting } from "./components/Accounting header/header";
-import { AccountingTable } from "./components/Table/table";
+import { FinancialAccounting } from "./components/Accounting header/header"
+import { AccountingTable } from "./components/Table/table"
 export const HomePage = () => {
   return (
     <Box style={{ display: "flex", height: "100%", position: "relative" }}>
@@ -20,14 +20,16 @@ export const HomePage = () => {
           borderColor: "#fff",
         }}
         backgroundColor="#6677a2"
-        image={sidebarBg}>
+        image={sidebarBg}
+      >
         {/* // > */}
         <Box
           style={{
             height: "250px",
             display: "flex",
             justifyContent: "center",
-          }}>
+          }}
+        >
           <img className="ico photo" alt="Ico" src={default_user_photo} />
         </Box>
         <Box>
@@ -42,7 +44,8 @@ export const HomePage = () => {
                   color: "#b6c8d9",
                 },
               },
-            }}>
+            }}
+          >
             {/* <MenuItem
               active={false}
               icon={<HomeOutlinedIcon />}
@@ -64,7 +67,8 @@ export const HomePage = () => {
               },
             },
           }}
-          style={{ bottom: "20px", position: "absolute", width: "100%" }}>
+          style={{ bottom: "20px", position: "absolute", width: "100%" }}
+        >
           <MenuItem icon={<SettingsIcon />} component={<Link to="/settings" />}>
             Settings
           </MenuItem>
@@ -81,11 +85,12 @@ export const HomePage = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-          }}>
+          }}
+        >
           <FinancialAccounting />
           <AccountingTable />
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}

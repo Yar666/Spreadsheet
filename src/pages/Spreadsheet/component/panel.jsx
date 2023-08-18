@@ -1,23 +1,62 @@
-import React, { useState } from "react";
-import { Box } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { Menu, MenuItem } from "react-pro-sidebar";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import React, { useEffect, useState } from "react"
+import { Box } from "@mui/material"
+import TextField from "@mui/material/TextField"
+import InputLabel from "@mui/material/InputLabel"
+import FormControl from "@mui/material/FormControl"
+import Select from "@mui/material/Select"
+import { Menu, MenuItem } from "react-pro-sidebar"
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline"
 
-export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
-  console.log(Params);
-  const [propType, setPropType] = useState(!EditPanel ? "Income" : Params.type);
+export const Panel = ({
+  EditPanel,
+  params,
+  SetDataRows,
+  setcallBackSubmit,
+}) => {
+  const [propType, setPropType] = useState(!EditPanel ? "Income" : params.type)
   const [propCategory, setPropCategory] = useState(
-    !EditPanel ? "Other" : Params.category
-  );
-  const [propAmount, setPropAmount] = useState(!EditPanel ? "" : Params.amount);
-  const [propMonth, setPropMonth] = useState(!EditPanel ? "Jan" : Params.month);
-  const [propYear, setPropYear] = useState(!EditPanel ? 2023 : Params.year);
+    !EditPanel ? "Other" : params.category
+  )
+  const onChangeType = (value) => {
+    if (value != propType) {
+      setPropType(value)
+      setPropCategory("Other")
+    }
+  }
+  const [propAmount, setPropAmount] = useState(!EditPanel ? "" : params.amount)
+  const [propMonth, setPropMonth] = useState(!EditPanel ? "Jan" : params.month)
+  const [propYear, setPropYear] = useState(!EditPanel ? 2023 : params.year)
 
-  const [isAmountValid, setIsAmountValid] = useState(true);
+  const [isAmountValid, setIsAmountValid] = useState(true)
+  const getData = () => {
+    console.log("!!!", propYear)
+    return updatedFields
+  }
+  useEffect(() => {
+    if (EditPanel) {
+      setcallBackSubmit([
+        () => {
+          if (!validation()) {
+            return false
+          }
+          let updatedFields = {
+            id: params.id,
+            type: propType,
+            category: propCategory,
+            amount: propAmount,
+            month: propMonth,
+            year: propYear,
+          }
+          SetDataRows((prevData) => {
+            return prevData.map((item) =>
+              item.id === params.id ? updatedFields : item
+            )
+          })
+          return true
+        },
+      ])
+    }
+  }, [params, propType, propCategory, propAmount, propMonth, propYear])
 
   const month = [
     "Jan",
@@ -32,18 +71,24 @@ export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
     "Oct",
     "Nov",
     "Dec",
-  ];
-
-  const submit = (event) => {
-    if (propAmount.trim() === "") {
-      setIsAmountValid(false);
-      return;
+  ]
+  const validation = () => {
+    if (propAmount === "") {
+      console.log("Invalid amount")
+      setIsAmountValid(false)
+      return false
     } else {
-      setIsAmountValid(true);
+      setIsAmountValid(true)
+      return true
+    }
+  }
+  const submit = (event) => {
+    if (!validation()) {
+      return
     }
     event.preventDefault();
     SetDataRows((state) => {
-      console.log(state);
+      console.log(state)
 
       return state.concat({
         id: state.length + 1,
@@ -52,14 +97,14 @@ export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
         amount: propAmount,
         month: propMonth,
         year: propYear,
-      });
-    });
-  };
+      })
+    })
+  }
 
   const handleChange = (func, value) => {
-    func(value);
-    console.log(value);
-  };
+    func(value)
+    console.log(value)
+  }
   return (
     <Box style={!EditPanel ? { width: "80%", height: "10%" } : null}>
       <Box
@@ -68,7 +113,8 @@ export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
           display: "flex",
           height: "100%",
           borderRadius: "10px",
-        }}>
+        }}
+      >
         <Box className="micro-selectors">
           <Menu style={{ width: "100%" }}>
             <FormControl fullWidth>
@@ -79,8 +125,9 @@ export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
                 value={propType}
                 label="Type"
                 onChange={(event) =>
-                  handleChange(setPropType, event.target.value)
-                }>
+                  handleChange(onChangeType, event.target.value)
+                }
+              >
                 <MenuItem value={"Income"}>Income</MenuItem>
                 <MenuItem value={"Expense"}>Expense</MenuItem>
               </Select>
@@ -99,7 +146,8 @@ export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
                 label="Category"
                 onChange={(event) =>
                   handleChange(setPropCategory, event.target.value)
-                }>
+                }
+              >
                 <option value={"Other"}>Other</option>
                 {propType === "Income" ? (
                   <optgroup label="Income">
@@ -146,7 +194,8 @@ export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
                 label="Month"
                 onChange={(event) =>
                   handleChange(setPropMonth, event.target.value)
-                }>
+                }
+              >
                 {month.map((month) => (
                   <MenuItem key={month} value={month}>
                     {month}
@@ -167,7 +216,8 @@ export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
                 label="Year"
                 onChange={(event) =>
                   handleChange(setPropYear, event.target.value)
-                }>
+                }
+              >
                 <MenuItem value={2022}>2022</MenuItem>
                 <MenuItem value={2023}>2023</MenuItem>
                 <MenuItem value={2024}>2024</MenuItem>
@@ -185,5 +235,5 @@ export const Panel = ({ EditPanel, Params, SetDataRows, CallBack }) => {
         ) : null}
       </Box>
     </Box>
-  );
-};
+  )
+}
